@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Nop.Core;
 using Nop.Core.Plugins;
 using Nop.Services.Cms;
@@ -16,12 +15,12 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage
         private readonly ISettingService _settingService;
         private readonly IReadOnlyDictionary<string, string> _locales = new Dictionary<string, string>
         {
-            { "Plugins.Widgets.NivoSlider.Description", "Task #2. Implement a new widget plugin (IWidgetPlugin). This plugin should display a message on the product details page in public store (e.g. “50% discount in December”). And this message should be editable in admin area on the widget configuration page." },
-            { "Plugins.Widgets.NivoSlider.Label", "50% discount in December" },
-            { "Plugins.Widgets.NivoSlider.Label.Hint", "Message visible on the product details page" },
-            { "Plugins.Widgets.NivoSlider.Checkbox", "Enabled" },
-            { "Plugins.Widgets.NivoSlider.Checkbox.Hint", "Determines whether the message is visible or not" },
-            { "Plugins.Widgets.NivoSlider.Footer", "Programmed with love in Prague @11:11pm 07/17/18. VS15, ReSharper, Coffee" }
+            { "Plugins.Widgets.ProductDetailMessage.Description", "Task #2. Implement a new widget plugin (IWidgetPlugin). This plugin should display a message on the product details page in public store (e.g. “50% discount in December”). And this message should be editable in admin area on the widget configuration page." },
+            { "Plugins.Widgets.ProductDetailMessage.Label", "Message" },
+            { "Plugins.Widgets.ProductDetailMessage.Label.Hint", "Message visible on the product details page" },
+            { "Plugins.Widgets.ProductDetailMessage.Checkbox", "Enabled" },
+            { "Plugins.Widgets.ProductDetailMessage.Checkbox.Hint", "Determines whether the message is visible or not" },
+            { "Plugins.Widgets.ProductDetailMessage.Footer", "Programmed with love in Prague @11:11pm 07/17/18. VS15, ReSharper, Coffee" }
         };
 
         #region Constructors
@@ -38,6 +37,13 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage
 
         public override void Install()
         {
+            var settings = new ProductDetailMessageSettings
+            {
+                Message = "50% discount in December",
+                IsEnabled = true
+            };
+            _settingService.SaveSetting(settings);
+
             foreach (var locale in _locales)
             {
                 _localizationService.AddOrUpdatePluginLocaleResource(locale.Key, locale.Value);
@@ -47,6 +53,8 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage
 
         public override void Uninstall()
         {
+            _settingService.DeleteSetting<ProductDetailMessageSettings>();
+
             foreach (var locale in _locales)
             {
                 _localizationService.DeletePluginLocaleResource(locale.Key);
