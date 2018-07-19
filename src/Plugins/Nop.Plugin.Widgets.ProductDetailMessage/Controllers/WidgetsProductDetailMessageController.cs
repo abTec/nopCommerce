@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Nop.Core;
 using Nop.Plugin.Widgets.ProductDetailMessage.Models;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
@@ -14,16 +15,17 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly IPermissionService _permissionService;
         private readonly ISettingService _settingService;
+        private readonly IStoreContext _storeContext;
 
         public WidgetsProductDetailMessageController(ILocalizationService localizationService,
             IPermissionService permissionService,
-            ISettingService settingService)
+            ISettingService settingService, IStoreContext storeContext)
         {
             _localizationService = localizationService;
             _permissionService = permissionService;
             _settingService = settingService;
+            _storeContext = storeContext;
         }
-
 
         public IActionResult Configure()
         {
@@ -32,12 +34,18 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
                 return AccessDeniedView();
             }
 
-            var settings = _settingService.LoadSetting<ProductDetailMessageSettings>();
+            var storeScope = _storeContext.ActiveStoreScopeConfiguration;
+            var settings = _settingService.LoadSetting<ProductDetailMessageSettings>(storeScope);
             var model = new ConfigurationModel
             {
                 Message = settings.Message,
                 IsEnabled = settings.IsEnabled
             };
+            if (storeScope > 0)
+            {
+                model.Message_OverrideForStore = _settingService.SettingExists(settings, x => x.Message, storeScope);
+                model.IsEnabled_OverrideForStore = _settingService.SettingExists(settings, x => x.IsEnabled, storeScope);
+            }
 
             return View("~/Plugins/Widgets.ProductDetailMessage/Views/Configure.cshtml", model);
         }
@@ -45,15 +53,16 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
         [HttpPost]
         public IActionResult Configure(ConfigurationModel model)
         {
-            SuccessNotification(_localizationService.GetResource("Admin.Plugins.Saved"));
+            var storeScope = _storeContext.ActiveStoreScopeConfiguration;
+            var settings = _settingService.LoadSetting<ProductDetailMessageSettings>(storeScope);
+            settings.Message = model.Message;
+            settings.IsEnabled = model.IsEnabled;
 
-            var settings = new ProductDetailMessageSettings
-            {
-                Message = model.Message,
-                IsEnabled = model.IsEnabled
-            };
-            _settingService.SaveSetting(settings);
+            _settingService.SaveSettingOverridablePerStore(settings, x => x.Message, model.Message_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(settings, x => x.IsEnabled, model.IsEnabled_OverrideForStore, storeScope, false);
+
             _settingService.ClearCache();
+            SuccessNotification(_localizationService.GetResource("Admin.Plugins.Saved"));
 
             return Configure();
         }
