@@ -8,27 +8,29 @@
 <form asp-controller="WidgetsProductDetailMessage" asp-action="Configure" method="post">
     <div class="panel-group">
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-body">
                 @T("Plugins.Widgets.ProductDetailMessage.Description")
             </div>
+        </div>
+        <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
                     <div class="col-md-3">
-                        @*<nop-override-store-checkbox asp-for="Message_OverrideForStore" asp-input="Message" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />*@
-                        <nop-label asp-for="Message" />
+                        <nop-override-store-checkbox asp-for="Message_OverrideForStore" asp-input="Message" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Message"/>
                     </div>
                     <div class="col-md-9">
-                        <nop-editor asp-for="Message" />
+                        <nop-editor asp-for="Message"/>
                         <span asp-validation-for="Message"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-3">
-                        @*<nop-override-store-checkbox asp-for="IsEnabled_OverrideForStore" asp-input="IsEnabled" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />*@
-                        <nop-label asp-for="IsEnabled" />
+                        <nop-override-store-checkbox asp-for="IsEnabled_OverrideForStore" asp-input="IsEnabled" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="IsEnabled"/>
                     </div>
                     <div class="col-md-9">
-                        <nop-editor asp-for="IsEnabled" />
+                        <nop-editor asp-for="IsEnabled"/>
                         <span asp-validation-for="IsEnabled"></span>
                     </div>
                 </div>
@@ -37,7 +39,7 @@
                         &nbsp;
                     </div>
                     <div class="col-md-9">
-                        <input type="submit" name="save" class="btn bg-blue" value="@T("Admin.Common.Save")" />
+                        <input type="submit" name="save" class="btn bg-blue" value="@T("Admin.Common.Save")"/>
                     </div>
                 </div>
             </div>

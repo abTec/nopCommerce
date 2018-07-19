@@ -5,6 +5,8 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Models
 {
     public class ConfigurationModel : BaseNopModel
     {
+        public int ActiveStoreScopeConfiguration { get; set; }
+
         [NopResourceDisplayName("Plugins.Widgets.ProductDetailMessage.Label")]
         public string Message { get; set; }
         public bool Message_OverrideForStore { get; set; }

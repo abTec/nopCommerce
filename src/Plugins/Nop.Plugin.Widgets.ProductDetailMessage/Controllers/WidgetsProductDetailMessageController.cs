@@ -39,7 +39,8 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
             var model = new ConfigurationModel
             {
                 Message = settings.Message,
-                IsEnabled = settings.IsEnabled
+                IsEnabled = settings.IsEnabled,
+                ActiveStoreScopeConfiguration = storeScope
             };
             if (storeScope > 0)
             {
