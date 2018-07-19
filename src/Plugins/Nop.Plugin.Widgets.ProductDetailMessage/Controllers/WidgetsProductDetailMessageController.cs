@@ -38,6 +38,7 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
                 Message = settings.Message,
                 IsEnabled = settings.IsEnabled
             };
+
             return View("~/Plugins/Widgets.ProductDetailMessage/Views/Configure.cshtml", model);
         }
 

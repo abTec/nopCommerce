@@ -21,7 +21,7 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Components
         public IViewComponentResult Invoke(string widgetZone, object additionalData)
         {
             var settings = _settingService.LoadSetting<ProductDetailMessageSettings>(_storeContext.CurrentStore.Id);
-            if (string.IsNullOrEmpty(settings.Message)) return Content("");
+            if (!settings.IsEnabled || string.IsNullOrEmpty(settings.Message)) return Content("");
 
             var model = new PublicInfoModel
             {

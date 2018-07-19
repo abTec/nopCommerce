@@ -63,7 +63,7 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage
             base.Uninstall();
         }
 
-        public IList<string> GetWidgetZones() => new List<string> { PublicWidgetZones.ProductDetailsTop };
+        public IList<string> GetWidgetZones() => new List<string> { PublicWidgetZones.ProductDetailsAddInfo };
 
         public string GetWidgetViewComponentName(string widgetZone) => "WidgetsProductDetailMessage";
     }
