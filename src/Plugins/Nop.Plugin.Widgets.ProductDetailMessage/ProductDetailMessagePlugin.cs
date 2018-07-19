@@ -65,6 +65,6 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage
 
         public IList<string> GetWidgetZones() => new List<string> { PublicWidgetZones.ProductDetailsTop };
 
-        public string GetWidgetViewComponentName(string widgetZone) => "ProductDetailMessage";
+        public string GetWidgetViewComponentName(string widgetZone) => "WidgetsProductDetailMessage";
     }
 }
