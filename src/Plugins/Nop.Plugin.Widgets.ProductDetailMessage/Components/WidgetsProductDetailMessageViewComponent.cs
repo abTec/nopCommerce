@@ -2,6 +2,7 @@
 using Nop.Core;
 using Nop.Plugin.Widgets.ProductDetailMessage.Models;
 using Nop.Services.Configuration;
+using Nop.Services.Localization;
 using Nop.Web.Framework.Components;
 
 namespace Nop.Plugin.Widgets.ProductDetailMessage.Components
@@ -11,11 +12,16 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Components
     {
         private readonly ISettingService _settingService;
         private readonly IStoreContext _storeContext;
+        private readonly IWorkContext _workContext;
+        private readonly ILocalizationService _localizationService;
 
-        public WidgetsProductDetailMessageViewComponent(ISettingService settingService, IStoreContext storeContext)
+        public WidgetsProductDetailMessageViewComponent(ISettingService settingService,
+            IStoreContext storeContext, IWorkContext workContext, ILocalizationService localizationService)
         {
             _settingService = settingService;
             _storeContext = storeContext;
+            _workContext = workContext;
+            _localizationService = localizationService;
         }
 
         public IViewComponentResult Invoke(string widgetZone, object additionalData)
@@ -25,8 +31,8 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Components
 
             var model = new PublicInfoModel
             {
-                Message = settings.Message,
-                IsEnabled = settings.IsEnabled
+                Message = _localizationService.GetLocalizedSetting(settings,
+                    x => x.Message, _workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id)
             };
 
             return View("~/Plugins/Widgets.ProductDetailMessage/Views/PublicInfo.cshtml", model);

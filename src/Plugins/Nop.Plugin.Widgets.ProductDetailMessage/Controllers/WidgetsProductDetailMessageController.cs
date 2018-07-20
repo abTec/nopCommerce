@@ -14,15 +14,17 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
     {
         private readonly ILocalizationService _localizationService;
         private readonly IPermissionService _permissionService;
+        private readonly ILanguageService _languageService;
         private readonly ISettingService _settingService;
         private readonly IStoreContext _storeContext;
 
         public WidgetsProductDetailMessageController(ILocalizationService localizationService,
-            IPermissionService permissionService,
+            IPermissionService permissionService, ILanguageService languageService,
             ISettingService settingService, IStoreContext storeContext)
         {
             _localizationService = localizationService;
             _permissionService = permissionService;
+            _languageService = languageService;
             _settingService = settingService;
             _storeContext = storeContext;
         }
@@ -42,6 +44,12 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
                 IsEnabled = settings.IsEnabled,
                 ActiveStoreScopeConfiguration = storeScope
             };
+            //locales
+            AddLocales(_languageService, model.Locales, (locale, languageId) =>
+            {
+                locale.Message = _localizationService
+                    .GetLocalizedSetting(settings, x => x.Message, languageId, storeScope);
+            });
             if (storeScope > 0)
             {
                 model.Message_OverrideForStore = _settingService.SettingExists(settings, x => x.Message, storeScope);
@@ -63,6 +71,12 @@ namespace Nop.Plugin.Widgets.ProductDetailMessage.Controllers
             _settingService.SaveSettingOverridablePerStore(settings, x => x.IsEnabled, model.IsEnabled_OverrideForStore, storeScope, false);
 
             _settingService.ClearCache();
+
+            foreach (var localized in model.Locales)
+            {
+                _localizationService.SaveLocalizedSetting(settings,
+                    x => x.Message, localized.LanguageId, localized.Message);
+            }
             SuccessNotification(_localizationService.GetResource("Admin.Plugins.Saved"));
 
             return Configure();
