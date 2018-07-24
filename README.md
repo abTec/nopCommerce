@@ -68,7 +68,7 @@ I've added the multistore and also multilingual support. The plugin also has IsE
 ![Configuration Page](http://nopcommerce.abtec.cz/widget.png)
 You can see my progress in branch [abeles/task2](https://github.com/abTec/nopCommerce/tree/abeles/task2). 
 And here is the final [Pull Request](https://github.com/abTec/nopCommerce/pull/1) into to the develop branch. Woohoo! So fun!
-Both task are merged and deployed **[here](http://194.182.82.20)**
+Both tasks are merged and deployed **[here](http://194.182.82.20)**
 
 If you have any question do not hesitate to contact me at:
 nopcommerce@abtec.cz
