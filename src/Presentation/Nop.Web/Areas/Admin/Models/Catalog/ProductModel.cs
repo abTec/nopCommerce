@@ -72,6 +72,9 @@ namespace Nop.Web.Areas.Admin.Models.Catalog
 
         #region Properties
 
+        [NopResourceDisplayName("Admin.Catalog.Categories.Fields.Author")]
+        public string Author { get; set; }
+
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.ID")]
         public override int Id { get; set; }
 
@@ -484,6 +487,9 @@ namespace Nop.Web.Areas.Admin.Models.Catalog
     public partial class ProductLocalizedModel : ILocalizedLocaleModel
     {
         public int LanguageId { get; set; }
+
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Author")]
+        public string Author { get; set; }
 
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.Name")]
         public string Name { get; set; }

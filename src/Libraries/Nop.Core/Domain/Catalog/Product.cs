@@ -26,6 +26,12 @@ namespace Nop.Core.Domain.Catalog
         protected ICollection<DiscountProductMapping> _discountProductMappings;
         private ICollection<ProductWarehouseInventory> _productWarehouseInventory;
 
+
+        /// <summary>
+        /// Gets or sets the products author
+        /// </summary>
+        public string Author { get; set; }
+
         /// <summary>
         /// Gets or sets the product type identifier
         /// </summary>
