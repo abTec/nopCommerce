@@ -819,6 +819,7 @@ namespace Nop.Web.Areas.Admin.Factories
                 //define localized model configuration action
                 localizedModelConfiguration = (locale, languageId) =>
                 {
+                    locale.Author = _localizationService.GetLocalized(product, entity => entity.Author, languageId, false, false);
                     locale.Name = _localizationService.GetLocalized(product, entity => entity.Name, languageId, false, false);
                     locale.FullDescription = _localizationService.GetLocalized(product, entity => entity.FullDescription, languageId, false, false);
                     locale.ShortDescription = _localizationService.GetLocalized(product, entity => entity.ShortDescription, languageId, false, false);

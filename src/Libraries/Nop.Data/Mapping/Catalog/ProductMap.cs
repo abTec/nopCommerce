@@ -20,6 +20,7 @@ namespace Nop.Data.Mapping.Catalog
             builder.ToTable(nameof(Product));
             builder.HasKey(product => product.Id);
 
+            builder.Property(product => product.Author).HasMaxLength(255);
             builder.Property(product => product.Name).HasMaxLength(400).IsRequired();
             builder.Property(product => product.MetaKeywords).HasMaxLength(400);
             builder.Property(product => product.MetaTitle).HasMaxLength(400);

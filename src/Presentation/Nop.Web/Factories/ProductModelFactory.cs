@@ -1128,6 +1128,7 @@ namespace Nop.Web.Factories
                 var model = new ProductOverviewModel
                 {
                     Id = product.Id,
+                    Author = _localizationService.GetLocalized(product, x => x.Author),
                     Name = _localizationService.GetLocalized(product, x => x.Name),
                     ShortDescription = _localizationService.GetLocalized(product, x => x.ShortDescription),
                     FullDescription = _localizationService.GetLocalized(product, x => x.FullDescription),
@@ -1182,6 +1183,7 @@ namespace Nop.Web.Factories
             var model = new ProductDetailsModel
             {
                 Id = product.Id,
+                Author = _localizationService.GetLocalized(product, x => x.Author),
                 Name = _localizationService.GetLocalized(product, x => x.Name),
                 ShortDescription = _localizationService.GetLocalized(product, x => x.ShortDescription),
                 FullDescription = _localizationService.GetLocalized(product, x => x.FullDescription),
