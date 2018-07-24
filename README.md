@@ -42,6 +42,7 @@ This task is very disputable in my eyes. I believe that the right solution depen
     
  * If I am a core nop developer the greatest possible way is to extend core Product entity. You can see how to do it in my
   [abeles/task1](https://github.com/abTec/nopCommerce/tree/abeles/task1) branch.
+  
     | Pros           | Cons           |
     | ------------- |----------------|
     | Easy to implement     | Touching the core. You can have some conflicts in the code in the future, but we are GIT gurus, right? So, no fear |
