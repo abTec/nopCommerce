@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Widgets",
+  "FriendlyName": "Product Detail Message Widget",
+  "SystemName": "Widgets.ProductDetailMessage",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.10" ],
+  "Author": "Andrej Beles",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Widgets.ProductDetailMessage.dll",
+  "Description": "This plugin allows you to control a message displayed on product details page"
+}
