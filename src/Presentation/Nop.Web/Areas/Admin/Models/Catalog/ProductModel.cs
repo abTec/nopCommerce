@@ -72,7 +72,7 @@ namespace Nop.Web.Areas.Admin.Models.Catalog
 
         #region Properties
 
-        [NopResourceDisplayName("Admin.Catalog.Categories.Fields.Author")]
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Author")]
         public string Author { get; set; }
 
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.ID")]
