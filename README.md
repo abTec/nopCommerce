@@ -47,9 +47,9 @@ This task is very disputable in my eyes. I believe that the right solution depen
     | Pros           | Cons           |
     | ------------- |----------------|
     | Easy to implement     | Touching the core. You can have some conflicts in the code in the future, but we are GIT gurus, right? So, no fear |
-* If I want to show you how cool I can code or just don't want to touch the core files I can implement custom plugin. This solution is the most sophisticated but maybe also the most "data pattern clear". How to do it?
+* If I want to show you how cool I can code or just don't want to touch the core files I can implement custom plugin. This solution is the most sophisticated and can be tricky but maybe also the most "data pattern clear". How to do it?
     * I need to create a new custom plugin with Data Access Layer
-    * Create a domain object with Author property and ProductId property to create a relation.
+    * Create a domain object with Author property and ProductId property to create a relation bewtween Product and my table.
     * Override product view to call my service and display author field from database.
     * Override admin product edit/add view and also controller (or service) to handle saving author
     
@@ -68,11 +68,15 @@ I've added the multistore and also multilingual support. The plugin also has IsE
 ![Configuration Page](http://nopcommerce.abtec.cz/widget.png)
 You can see my progress in branch [abeles/task2](https://github.com/abTec/nopCommerce/tree/abeles/task2). 
 And here is the final [Pull Request](https://github.com/abTec/nopCommerce/pull/1) into to the develop branch. Woohoo! So fun!
+Both task are merged and deployed **[here](http://194.182.82.20)**
 
 If you have any question do not hesitate to contact me at:
 nopcommerce@abtec.cz
 or via [LinkedIn](https://www.linkedin.com/in/andrejbeles/).
-## resources: ##
+## Resources: ##
+You can see my running solution here: [NopCommerce](http://194.182.82.20)
+admin: nopcommerce@abtec.cz
+p: parol2018
 
 CV in pdf: [http://nopcommerce.abtec.cz/cv_beles_eng.pdf](http://nopcommerce.abtec.cz/cv_beles_eng.pdf)
 
