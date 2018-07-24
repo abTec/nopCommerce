@@ -27,7 +27,7 @@ Both are running under 3.90 version. Migration to 4.00 is planned within a few w
 
 But nowadays I have only one target. To become a core nopCommerce developer. Can you imagine that? Absolutely mind-blowing
 
-![BOOOM](http://nopcommerce.abtec.cz/tenor.gif)
+![BOOOM](http://nopcommerce.abtec.cz/mind.gif)
 
 Now let's talk about our tasks in detail:
 =============
