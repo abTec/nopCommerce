@@ -74,7 +74,8 @@ If you have any question do not hesitate to contact me at:
 nopcommerce@abtec.cz
 or via [LinkedIn](https://www.linkedin.com/in/andrejbeles/).
 ## Resources: ##
-You can see my running solution here: [NopCommerce](http://194.182.82.20)
+You can see my running solution here: [~~NopCommerce~~](http://194.182.82.20)
+:warning: SITE IS DOWN IF YOU WANNA SEE IT WRITE ME A MESSAGE
 admin: nopcommerce@abtec.cz
 p: parol2018
 
