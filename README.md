@@ -13,8 +13,9 @@ My first programming language, as for many others, was PHP. I was working on baz
 
 Later on I've become a **.NET developer**. YEAH! C# is the best language in the world! Ask Steve!
 ![.NET .NET .NET](http://nopcommerce.abtec.cz/steve.gif)
+
 I was working on many cool projects within my career. 
-Hey did you see some [2018 World Cup](https://en.wikipedia.org/wiki/2018_FIFA_World_Cup) football match in Russia? Our cool .NET hardcore system was running during the each match. You can read more about my on my [linkedin profile](https://www.linkedin.com/in/andrejbeles/)
+Hey did you see some [2018 World Cup](https://en.wikipedia.org/wiki/2018_FIFA_World_Cup) football match in Russia? Our cool .NET hardcore system was running during the each match. You can read more about me on my [linkedin profile](https://www.linkedin.com/in/andrejbeles/)
 
 But in last few years I have totally fall in love with nopCommerce. I was playing with it since version 2.x.
 The last projects that I can mentioned are:
